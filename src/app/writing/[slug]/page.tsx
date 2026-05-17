@@ -12,12 +12,8 @@ type WritingPostPageProps = {
   }>;
 };
 
-function findPost(slug: string) {
-  try {
-    return getPostBySlug(slug);
-  } catch {
-    return null;
-  }
+function postExists(slug: string) {
+  return getPostSlugs().includes(slug);
 }
 
 export function generateStaticParams() {
@@ -28,13 +24,14 @@ export async function generateMetadata({
   params,
 }: WritingPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = findPost(slug);
 
-  if (!post) {
+  if (!postExists(slug)) {
     return {
       title: "Writing",
     };
   }
+
+  const post = getPostBySlug(slug);
 
   return {
     title: post.title,
@@ -44,12 +41,12 @@ export async function generateMetadata({
 
 export default async function WritingPostPage({ params }: WritingPostPageProps) {
   const { slug } = await params;
-  const post = findPost(slug);
 
-  if (!post) {
+  if (!postExists(slug)) {
     notFound();
   }
 
+  const post = getPostBySlug(slug);
   const { default: MDXContent } = await evaluate(post.content, runtime);
 
   return (
