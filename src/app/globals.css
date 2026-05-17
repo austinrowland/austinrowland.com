@@ -55,14 +55,18 @@ a:hover {
   border-bottom: 1px solid var(--color-border);
 }
 
-.site-title {
+.site-title,
+.site-header__brand {
   margin: 0;
   font-size: clamp(1.25rem, 2vw, 1.75rem);
   line-height: 1.2;
 }
 
 .site-nav,
-.social-links {
+.social-links,
+.site-header__nav,
+.site-header__social,
+.site-footer__nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -70,7 +74,10 @@ a:hover {
 }
 
 .site-nav a,
-.social-links a {
+.social-links a,
+.site-header__nav a,
+.site-header__social a,
+.site-footer__nav a {
   color: var(--color-text);
   font-size: 0.95rem;
 }
