@@ -20,27 +20,34 @@ function formatDateRange(entry: WorkEntry): string {
 export function WorkCard({ entry }: WorkCardProps) {
   return (
     <article className="work-card">
-      <header>
-        <p>{entry.question}</p>
+      <header className="work-card__header">
+        <p className="work-card__question">{entry.question}</p>
         <h2>{entry.title}</h2>
-        <p>{entry.organization}</p>
-        <p>{formatDateRange(entry)}</p>
+        <div className="work-card__meta">
+          <span>{entry.organization}</span>
+          <time>{formatDateRange(entry)}</time>
+        </div>
       </header>
-      <p>{entry.summary}</p>
-      {entry.impact.length > 0 ? (
-        <ul>
-          {entry.impact.map((impact) => (
-            <li key={impact}>{impact}</li>
-          ))}
-        </ul>
-      ) : null}
-      {entry.technologies.length > 0 ? (
-        <ul>
-          {entry.technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
-          ))}
-        </ul>
-      ) : null}
+      <div className="work-card__body">
+        <p className="work-card__summary">{entry.summary}</p>
+        {entry.impact.length > 0 ? (
+          <ul className="work-card__impact">
+            {entry.impact.map((impact) => (
+              <li key={impact}>{impact}</li>
+            ))}
+          </ul>
+        ) : null}
+        {entry.technologies.length > 0 ? (
+          <ul
+            className="work-card__technologies"
+            aria-label={`${entry.organization} technologies`}
+          >
+            {entry.technologies.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </article>
   );
 }

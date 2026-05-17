@@ -2,6 +2,12 @@
 docs/superpowers/
 .superpowers/
 
+# macOS
+.DS_Store
+
+# Local browser artifacts
+.playwright-cli/
+
 # Dependencies
 node_modules/
 

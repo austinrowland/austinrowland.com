@@ -21,8 +21,14 @@ export function WritingList({ posts }: WritingListProps) {
             <Link href={`/writing/${post.slug}`}>{post.title}</Link>
           </h2>
           <p>{post.description}</p>
-          <time dateTime={post.published}>{post.published}</time>
-          <ul aria-label={`${post.title} tags`}>
+          <time dateTime={post.published}>
+            {new Intl.DateTimeFormat("en", {
+              month: "short",
+              timeZone: "UTC",
+              year: "numeric",
+            }).format(new Date(`${post.published}T00:00:00.000Z`))}
+          </time>
+          <ul className="tag-list" aria-label={`${post.title} tags`}>
             {post.tags.map((tag) => (
               <li key={tag}>{tag}</li>
             ))}
