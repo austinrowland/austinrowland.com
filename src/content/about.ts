@@ -6,6 +6,12 @@ export type AboutStoryEntry = {
   story: string;
 };
 
+export type AboutGalleryEntry = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export const aboutStory: AboutStoryEntry[] = [
   {
     arc: "Builder origin",
@@ -57,4 +63,4 @@ export const aboutStory: AboutStoryEntry[] = [
   },
 ];
 
-export const aboutGallery: string[] = [];
+export const aboutGallery: AboutGalleryEntry[] = [];

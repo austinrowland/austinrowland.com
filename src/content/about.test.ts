@@ -19,6 +19,14 @@ describe("about content", () => {
     expect(aboutGallery).toEqual([]);
   });
 
+  it("requires accessible gallery content when photos are selected", () => {
+    expect(
+      aboutGallery.every(
+        (entry) => entry.src.length > 0 && entry.alt.length > 0,
+      ),
+    ).toBe(true);
+  });
+
   it("includes caption and story text for each story entry", () => {
     expect(aboutStory.every((entry) => entry.caption.length > 0)).toBe(true);
     expect(aboutStory.every((entry) => entry.story.length > 0)).toBe(true);

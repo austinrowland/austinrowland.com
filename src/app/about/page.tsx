@@ -49,7 +49,10 @@ export default function AboutPage() {
         {aboutGallery.length > 0 ? (
           <div className="card-grid">
             {aboutGallery.map((image) => (
-              <img src={image} alt="" key={image} />
+              <figure className="card" key={image.src}>
+                <img src={image.src} alt={image.alt} />
+                {image.caption ? <figcaption>{image.caption}</figcaption> : null}
+              </figure>
             ))}
           </div>
         ) : null}
