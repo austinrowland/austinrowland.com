@@ -20,7 +20,7 @@ describe("writing content helpers", () => {
     );
   });
 
-  it("returns the builder landscape post with non-placeholder content", () => {
+  it("returns the builder landscape post with honest coming-soon content", () => {
     const post = getPostBySlug("lens-on-the-2026-builder-landscape");
 
     expect(post.content).toContain("This piece is in progress.");
