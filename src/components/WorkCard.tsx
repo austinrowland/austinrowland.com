@@ -5,9 +5,16 @@ type WorkCardProps = {
 };
 
 function formatDateRange(entry: WorkEntry): string {
+  const formatDate = (value: string) =>
+    new Intl.DateTimeFormat("en", {
+      month: "short",
+      timeZone: "UTC",
+      year: "numeric",
+    }).format(new Date(`${value}-01T00:00:00.000Z`));
+
   return entry.endDate
-    ? `${entry.startDate} - ${entry.endDate}`
-    : `${entry.startDate} - Present`;
+    ? `${formatDate(entry.startDate)} - ${formatDate(entry.endDate)}`
+    : `${formatDate(entry.startDate)} - Present`;
 }
 
 export function WorkCard({ entry }: WorkCardProps) {

@@ -22,7 +22,7 @@ export const workEntries: WorkEntry[] = [
     question:
       "How do we help builders and enterprises ship next generation of software through better API infrastructure and agentic workflows?",
     summary:
-      "Works close to strategic builders and enterprise teams to connect API infrastructure with emerging agentic software workflows.",
+      "Works closely with strategic builders and enterprise teams to connect API infrastructure with emerging agentic software workflows.",
     impact: [
       "Supports API infrastructure used by 40M+ developers worldwide.",
       "Brings customer implementation context back into product and platform decisions.",
