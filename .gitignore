@@ -1,2 +1,16 @@
 # Local Superpowers planning/spec artifacts
 docs/superpowers/
+.superpowers/
+
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Environment
+.env*.local
