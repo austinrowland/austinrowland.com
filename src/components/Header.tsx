@@ -1,27 +1,13 @@
 import Link from "next/link";
-import {
-  AtSign,
-  BriefcaseBusiness,
-  Camera,
-  Code2,
-  type LucideIcon,
-  X,
-} from "lucide-react";
 
 import { navigation, profile, socials } from "@/content/profile";
 
-const socialIcons: Record<string, LucideIcon> = {
-  Instagram: Camera,
-  LinkedIn: BriefcaseBusiness,
-  X,
-  GitHub: Code2,
+const socialLogos: Record<string, string> = {
+  GitHub: "/social/github-logo.png",
+  Instagram: "/social/instagram-logo.webp",
+  LinkedIn: "/social/linkedin-logo.webp",
+  X: "/social/x-icon.webp",
 };
-
-function SocialIcon({ label }: { label: string }) {
-  const Icon = socialIcons[label] ?? AtSign;
-
-  return <Icon aria-hidden="true" focusable="false" size={18} strokeWidth={1.8} />;
-}
 
 export function Header() {
   return (
@@ -45,7 +31,7 @@ export function Header() {
             rel="noreferrer"
             target="_blank"
           >
-            <SocialIcon label={social.label} />
+            <img alt="" src={socialLogos[social.label]} />
           </a>
         ))}
       </nav>
