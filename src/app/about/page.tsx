@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { PageIntro } from "@/components/PageIntro";
+import { aboutGallery, aboutStory } from "@/content/about";
 import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
@@ -8,36 +9,51 @@ export const metadata: Metadata = {
   description: `About ${profile.name}.`,
 };
 
-const storySections = [
-  {
-    title: "Background",
-    body: "This section is ready for the longer version of the story: where the work started, what shaped it, and what still matters.",
-  },
-  {
-    title: "Current focus",
-    body: "Use this space for the projects, questions, and life rhythms that define the present season.",
-  },
-  {
-    title: "Elsewhere",
-    body: "Add the communities, collaborations, and places on the web that make the rest of the profile easier to follow.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
       <PageIntro
         title={`About ${profile.name}`}
-        intro="A placeholder structure for the personal context behind the work and writing."
+        intro="I am an engineer and builder shaped by useful products, close communities, health and accessibility work, and platform problems that compound what ambitious people can do."
       />
-      <div className="prose">
-        {storySections.map((section) => (
-          <section key={section.title}>
-            <h2>{section.title}</h2>
-            <p>{section.body}</p>
+
+      <div className="about-story">
+        {aboutStory.map((entry) => (
+          <section className="about-story__item" key={entry.arc}>
+            <div className="about-story__media">
+              {entry.image ? (
+                <img src={entry.image} alt={entry.caption} />
+              ) : (
+                <p className="about-story__empty">Photo to add</p>
+              )}
+            </div>
+            <div className="prose">
+              <p>{entry.yearOrPlace}</p>
+              <h2>{entry.arc}</h2>
+              <p>{entry.story}</p>
+              <p>{entry.caption}</p>
+            </div>
           </section>
         ))}
       </div>
+
+      <section className="about-gallery">
+        <div className="section-header">
+          <h2>Gallery</h2>
+          {aboutGallery.length === 0 ? (
+            <p>Gallery photos will be added here once selected.</p>
+          ) : (
+            <p>A small collection of photos from the story above.</p>
+          )}
+        </div>
+        {aboutGallery.length > 0 ? (
+          <div className="card-grid">
+            {aboutGallery.map((image) => (
+              <img src={image} alt="" key={image} />
+            ))}
+          </div>
+        ) : null}
+      </section>
     </>
   );
 }
