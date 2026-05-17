@@ -30,7 +30,7 @@ describe("Header", () => {
 
     expect(screen.getByRole("link", { name: "Instagram" })).toHaveAttribute(
       "href",
-      "https://instagram.com/austinrowland",
+      "https://www.instagram.com/austinrowland/",
     );
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
       "href",
@@ -38,7 +38,7 @@ describe("Header", () => {
     );
     expect(screen.getByRole("link", { name: "X" })).toHaveAttribute(
       "href",
-      "https://x.com/austinrowland",
+      "https://x.com/austinrowland02",
     );
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute(
       "href",
