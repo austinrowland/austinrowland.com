@@ -7,48 +7,24 @@ import {
 } from "./writing";
 
 describe("writing content helpers", () => {
-  it("loads MDX posts with frontmatter and slugs", () => {
+  it("loads the 2026 builder landscape post with frontmatter and slug", () => {
     const posts = getAllPosts();
 
-    expect(posts).toHaveLength(2);
-    expect(posts).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          slug: "first-principles",
-          title: "First Principles",
-          description:
-            "A short note on using writing to clarify ideas from the ground up.",
-          published: "2026-05-10",
-          tags: ["thinking", "writing"],
-          featured: true,
-        }),
-        expect.objectContaining({
-          slug: "building-in-public",
-          title: "Building in Public",
-          description:
-            "A brief reflection on sharing work while it is still taking shape.",
-          published: "2026-04-22",
-          tags: ["process", "reflection"],
-          featured: false,
-        }),
-      ]),
+    expect(posts).toHaveLength(1);
+    expect(posts[0]).toEqual(
+      expect.objectContaining({
+        slug: "lens-on-the-2026-builder-landscape",
+        title: "Lens on the 2026 Builder Landscape",
+        featured: true,
+      }),
     );
   });
 
-  it("sorts posts newest to earliest by published date", () => {
-    const posts = getAllPosts();
+  it("returns the builder landscape post with non-placeholder content", () => {
+    const post = getPostBySlug("lens-on-the-2026-builder-landscape");
 
-    expect(posts.map((post) => post.published)).toEqual([
-      "2026-05-10",
-      "2026-04-22",
-    ]);
-  });
-
-  it('returns the "first-principles" post with content', () => {
-    const post = getPostBySlug("first-principles");
-
-    expect(post.slug).toBe("first-principles");
-    expect(post.content).toContain("Writing is where");
+    expect(post.content).toContain("This piece is in progress.");
+    expect(post.content).not.toContain("Lorem ipsum");
   });
 
   it("returns only featured posts", () => {
@@ -56,6 +32,5 @@ describe("writing content helpers", () => {
 
     expect(posts).toHaveLength(1);
     expect(posts.every((post) => post.featured)).toBe(true);
-    expect(posts.map((post) => post.slug)).toEqual(["first-principles"]);
   });
 });
