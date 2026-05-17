@@ -1,5 +1,6 @@
 # Local Superpowers planning/spec artifacts
 docs/superpowers/
+.superpowers/
 
 # Dependencies
 node_modules/
