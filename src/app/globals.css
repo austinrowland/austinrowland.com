@@ -11,6 +11,12 @@
   --measure: 90rem;
 }
 
+@font-face {
+  font-family: "Cinnabar Brush";
+  font-display: swap;
+  src: local("Cinnabar Brush"), local("DK Cinnabar Brush");
+}
+
 * {
   box-sizing: border-box;
 }
@@ -61,13 +67,20 @@ img {
   top: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 1.5rem;
   min-height: 4.5rem;
   padding-block: 1rem;
   background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.25rem);
 }
 
 .site-header__brand {
@@ -167,6 +180,8 @@ section,
 .home-intro h1 {
   max-width: 72rem;
   margin: 0;
+  font-family: "Cinnabar Brush", "DK Cinnabar Brush", "Brush Script MT",
+    "Comic Sans MS", cursive;
   font-size: clamp(3.2rem, 8vw, 8rem);
   font-weight: 400;
   letter-spacing: 0;
@@ -442,6 +457,11 @@ section,
 @media (max-width: 56rem) {
   .site-header {
     grid-template-columns: 1fr;
+  }
+
+  .site-header__left {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .page-intro,

@@ -12,16 +12,18 @@ const socialLogos: Record<string, string> = {
 export function Header() {
   return (
     <header className="site-header">
-      <Link className="site-header__brand" href="/">
-        {profile.name}
-      </Link>
-      <nav aria-label="Primary navigation" className="site-header__nav">
-        {navigation.map((item) => (
-          <Link href={item.href} key={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <div className="site-header__left">
+        <Link className="site-header__brand" href="/">
+          {profile.name}
+        </Link>
+        <nav aria-label="Primary navigation" className="site-header__nav">
+          {navigation.map((item) => (
+            <Link href={item.href} key={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
       <nav aria-label="Social links" className="site-header__social">
         {socials.map((social) => (
           <a
