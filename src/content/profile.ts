@@ -31,8 +31,8 @@ export const navigation: NavigationItem[] = [
 ];
 
 export const socials: SocialLink[] = [
-  { label: "X", href: "https://x.com/austinrowland02" },
-  { label: "GitHub", href: "https://github.com/austinrowland" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/austinrowland/" },
   { label: "Instagram", href: "https://www.instagram.com/austinrowland/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/austinrowland/" },
+  { label: "GitHub", href: "https://github.com/austinrowland" },
+  { label: "X", href: "https://x.com/austinrowland02" },
 ];

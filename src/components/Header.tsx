@@ -46,7 +46,11 @@ export function Header() {
             rel="noreferrer"
             target="_blank"
           >
-            <img alt="" src={socialLogos[social.label]} />
+            <img
+              alt=""
+              className={`site-header__social-logo site-header__social-logo--${social.label.toLowerCase()}`}
+              src={socialLogos[social.label]}
+            />
           </a>
         ))}
       </nav>
