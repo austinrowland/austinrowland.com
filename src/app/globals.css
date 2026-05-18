@@ -5,8 +5,8 @@
   --color-text: #f2f2f2;
   --color-muted: #8f938b;
   --color-border: #2a2d27;
-  --color-link: #c6ff4a;
-  --color-signal: #c6ff4a;
+  --color-link: #fbb03b;
+  --color-signal: #fbb03b;
   --space-page: clamp(1rem, 3vw, 3rem);
   --measure: 90rem;
 }
