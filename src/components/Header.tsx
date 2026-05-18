@@ -1,6 +1,9 @@
-import Link from "next/link";
+"use client";
 
-import { navigation, profile, socials } from "@/content/profile";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { navigation, socials } from "@/content/profile";
 
 const socialLogos: Record<string, string> = {
   GitHub: "/social/github-logo.png",
@@ -10,18 +13,28 @@ const socialLogos: Record<string, string> = {
 };
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="site-header">
       <div className="site-header__left">
-        <Link className="site-header__brand" href="/">
-          {profile.name}
-        </Link>
         <nav aria-label="Primary navigation" className="site-header__nav">
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === item.href
+                : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                aria-current={isActive ? "page" : undefined}
+                href={item.href}
+                key={item.href}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
       </div>
       <nav aria-label="Social links" className="site-header__social">

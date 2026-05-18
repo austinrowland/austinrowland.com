@@ -1,7 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Header } from "./Header";
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/work",
+}));
 
 describe("Header", () => {
   it("renders primary navigation links", () => {
@@ -22,6 +26,18 @@ describe("Header", () => {
     expect(screen.getByRole("link", { name: "About" })).toHaveAttribute(
       "href",
       "/about",
+    );
+  });
+
+  it("marks the active primary navigation link", () => {
+    render(<Header />);
+
+    expect(screen.getByRole("link", { name: "Work" })).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+    expect(screen.getByRole("link", { name: "Home" })).not.toHaveAttribute(
+      "aria-current",
     );
   });
 
